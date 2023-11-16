@@ -16,10 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $alias = $_POST["alias"];
     $clave = $_POST["clave"];
 
-    $sql = "SELECT * FROM usuarios WHERE alias = '$alias' AND clave = '$clave'";
+    $sql = "SELECT * FROM usuarios WHERE alias = '$alias'";
     $result = $conn->query($sql);
-
+    
+    $acceso = false;
     if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($clave, $row['clave'])){
+            $acceso = true;
+        }
+    } 
+    if ($acceso) {
         $_SESSION["alias"] = $alias;
         header("Location: dashboard.php");
     } else {

@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($clave !== $confirmar_clave) {
         echo "La contraseña no coincide.";
     } else {
+        $clave = password_hash($clave, PASSWORD_DEFAULT);
         $sql = "INSERT INTO usuarios (alias, clave) VALUES ('$alias', '$clave')";
         if ($conn->query($sql) === TRUE) {
             echo "Usuario registrado. <a href='index.php'>Ingresa aquí</a>.";
