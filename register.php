@@ -15,7 +15,7 @@
         <input type="password" name="clave" required><br>
 
         <label for="confirmar_clave">Confirmar clave:</label>
-        <input type="clave" name="confirmar_clave" required><br>
+        <input type="text" name="confirmar_clave" required><br>
 
         <button type="submit">Enviar</button>
     </form>
