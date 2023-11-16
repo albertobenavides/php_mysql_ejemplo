@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $sql = "INSERT INTO usuarios (alias, clave) VALUES ('$alias', '$clave')";
         if ($conn->query($sql) === TRUE) {
-            echo "Ya estás registrado. <a href='index.php'>Ingresa aquí</a>.";
+            echo "Usuario registrado. <a href='index.php'>Ingresa aquí</a>.";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
